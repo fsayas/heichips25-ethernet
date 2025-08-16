@@ -1,0 +1,31 @@
+** sch_path: /home/pc/heichips25-ethernet/xschem/lvds_ideal_mirror_test.sch
+**.subckt lvds_ideal_mirror_test
+XM1 dp dp_in vds_bot vds_bot sg13_lv_nmos w=5u l=0.13u ng=1 m=1
+XM2 dn dn_in vds_bot vds_bot sg13_lv_nmos w=5u l=0.13u ng=1 m=1
+XM5 dp dp_in vpwr vpwr sg13_lv_pmos w=5u l=0.13u ng=1 m=1
+XM6 dn dn_in vpwr vpwr sg13_lv_pmos w=5u l=0.13u ng=1 m=1
+I0 vpwr vgs_ref 0.1m
+XM3 vds_bot vgs_ref GND GND sg13_lv_nmos w=1u l=0.13u ng=1 m=1
+XM4 vgs_ref vgs_ref GND GND sg13_lv_nmos w=0.2u l=0.13u ng=1 m=1
+V1 vpwr GND 1.5
+Vdat_p dp_in GND dc 0 ac 0 pulse(0, 1.5, 0, 100p, 100p, 50n, 100n)
+Vdat_n dn_in GND dc 0 ac 0 pulse(1.5, 0, 0, 100p, 100p, 50n, 100n)
+R1 dn dp 100 m=1
+**** begin user architecture code
+ .lib cornerMOSlv.lib mos_tt
+
+
+
+.param temp=27
+.control
+save all
+tran 5n 500n
+plot V(vgs_ref) V(vds_bot)
+plot @n.xm3.nsg13_lv_nmos[ids]
+.endc
+
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end

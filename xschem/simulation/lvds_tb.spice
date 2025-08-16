@@ -1,0 +1,44 @@
+** sch_path: /home/pc/heichips25-ethernet/xschem/lvds_tb.sch
+**.subckt lvds_tb
+Vsup Vdd GND 1.5
+Vdat_p dp_in GND dc 0 ac 0 pulse(0, 1.5, 0, 100p, 100p, 50n, 100n)
+Vdat_n dn_in GND dc 0 ac 0 pulse(1.5, 0, 0, 100p, 100p, 50n, 100n)
+R1 dn dp 100 m=1
+x1 Vdd dn dn_in dp dp_in GND lvds
+**** begin user architecture code
+ .lib cornerMOSlv.lib mos_tt
+
+
+
+.param temp=27
+.control
+save all
+tran 5n 500n
+plot V(dp_in) V(dn_in) V(dp) V(dn)
+.endc
+
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  /home/pc/heichips25-ethernet/xschem/lvds.sym # of pins=6
+** sym_path: /home/pc/heichips25-ethernet/xschem/lvds.sym
+** sch_path: /home/pc/heichips25-ethernet/xschem/lvds.sch
+.subckt lvds VPWR dn dn_in dp dp_in VGND
+*.ipin dp_in
+*.ipin dn_in
+*.iopin VPWR
+*.iopin VGND
+*.iopin dp
+*.iopin dn
+XM1 dp dp_in net1 net1 sg13_lv_nmos w=50u l=1u ng=5 m=1
+XM2 dn dn_in net1 net1 sg13_lv_nmos w=50u l=1u ng=5 m=1
+XM5 dp dp_in VPWR VPWR sg13_lv_pmos w=50u l=1u ng=5 m=1
+XM6 dn dn_in VPWR VPWR sg13_lv_pmos w=50u l=1u ng=5 m=1
+XM3 net1 net2 VGND VGND sg13_lv_nmos w=50u l=1u ng=5 m=1
+XM4 net2 net2 VGND VGND sg13_lv_nmos w=10u l=4u ng=1 m=1
+XM7 VPWR VPWR net2 net2 sg13_lv_nmos w=10u l=10u ng=1 m=1
+.ends
+
+.GLOBAL GND
+.end

@@ -21,24 +21,7 @@ module heichips25_ethernet (
 );
 
     // List all unused inputs to prevent warnings
-    wire _unused = &{ena, ui_in[7:1], uio_in[7:0]};
-
-    logic [7:0] count;
-
-    always_ff @(posedge clk) begin
-        if (!rst_n) begin
-            count <= '0;
-        end else begin
-            if (ui_in[0]) begin
-                count <= count + 1;
-            end
-        end
-    end
-    
-    assign uo_out  = count;
-    assign uio_out = count;
-    assign uio_oe  = '1;
-
+    wire _unused = &{ui_in[7:1], uio_in[7:0]};
 
     // wire data_in_tst;
     // assign data_in_tst  = '1;
@@ -51,17 +34,17 @@ module heichips25_ethernet (
     //     .ethernet_dn(ehternet_dn_tst)
     // );
 
+    assign uio_out[7:1] = '0;
+    assign uio_oe[7:0] = '0;
 
-    logic [7:0] count_o;
-    logic counter_0_ovf;
 
     counter_8bit counter_0 (
 	    .clk_i      (clk),
 	    .rst_ni     (rst_n),
 	    .en_i       (ena),
 	    
-        .count_o    (count_o[7:0]),
-        .ovf_o      (counter_0_ovf)
+        .count_o    (uo_out[7:0]),
+        .ovf_o      (uio_out[0])
     );
 
 

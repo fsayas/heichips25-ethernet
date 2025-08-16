@@ -13,7 +13,7 @@ x1 vdd vdat dn dp GND ethernet_analog
 save all
 op
 dc Vdata 0 1.5 0.1
-plot v(vdat) v(dp) v(dn)
+plot v(vdat) v(dp) v(dn) @x1.M3[id]
 .endc
 
 

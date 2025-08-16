@@ -1,0 +1,17 @@
+** sch_path: /home/pc/heichips25-ethernet/xschem/lvds.sch
+**.subckt lvds VPWR dn dn_in dp dp_in VGND
+*.ipin dp_in
+*.ipin dn_in
+*.iopin VPWR
+*.iopin VGND
+*.iopin dp
+*.iopin dn
+XM1 dp dp_in net1 net1 sg13_lv_nmos w=50u l=1u ng=5 m=1
+XM2 dn dn_in net1 net1 sg13_lv_nmos w=50u l=1u ng=5 m=1
+XM5 dp dp_in VPWR VPWR sg13_lv_pmos w=50u l=1u ng=5 m=1
+XM6 dn dn_in VPWR VPWR sg13_lv_pmos w=50u l=1u ng=5 m=1
+XM3 net1 net2 VGND VGND sg13_lv_nmos w=50u l=1u ng=5 m=1
+XM4 net2 net2 VGND VGND sg13_lv_nmos w=10u l=4u ng=1 m=1
+XM7 VPWR VPWR net2 net2 sg13_lv_nmos w=10u l=10u ng=1 m=1
+**.ends
+.end

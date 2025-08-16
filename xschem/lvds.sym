@@ -1,0 +1,30 @@
+v {xschem version=3.4.7 file_version=1.2}
+G {}
+K {type=subcircuit
+format="@name @pinlist @symname"
+template="name=x1"
+}
+V {}
+S {}
+E {}
+L 4 -150 -30 -130 -30 {}
+L 4 -150 -10 -130 -10 {}
+L 7 130 -30 150 -30 {}
+L 7 130 -10 150 -10 {}
+L 7 130 10 150 10 {}
+L 7 130 30 150 30 {}
+B 5 147.5 -32.5 152.5 -27.5 {name=VPWR dir=inout}
+B 5 147.5 -12.5 152.5 -7.5 {name=dn dir=inout}
+B 5 -152.5 -32.5 -147.5 -27.5 {name=dn_in dir=in}
+B 5 147.5 7.5 152.5 12.5 {name=dp dir=inout}
+B 5 -152.5 -12.5 -147.5 -7.5 {name=dp_in dir=in}
+B 5 147.5 27.5 152.5 32.5 {name=VGND dir=inout}
+P 4 5 130 -40 -130 -40 -130 40 130 40 130 -40 {}
+T {@symname} -36 -6 0 0 0.3 0.3 {}
+T {@name} 135 -52 0 0 0.2 0.2 {}
+T {VPWR} 125 -34 0 1 0.2 0.2 {}
+T {dn} 125 -14 0 1 0.2 0.2 {}
+T {dn_in} -125 -34 0 0 0.2 0.2 {}
+T {dp} 125 6 0 1 0.2 0.2 {}
+T {dp_in} -125 -14 0 0 0.2 0.2 {}
+T {VGND} 125 26 0 1 0.2 0.2 {}
