@@ -5,24 +5,8 @@ VERSION 5.7 ;
 MACRO minimal_diff
   CLASS BLOCK ;
   FOREIGN minimal_diff ;
-  ORIGIN -1.870 3.180 ;
-  SIZE 2.740 BY 3.490 ;
-  PIN VPWR
-    DIRECTION INOUT ;
-    USE POWER ;
-    PORT
-      LAYER Metal1 ;
-        RECT 4.020 -2.230 4.280 -0.640 ;
-    END
-  END VPWR
-  PIN VGND
-    DIRECTION INOUT ;
-    USE GROUND ;
-    PORT
-      LAYER Metal1 ;
-        RECT 2.020 -2.230 2.280 -0.640 ;
-    END
-  END VGND
+  ORIGIN 45.850 17.000 ;
+  SIZE 100.000 BY 28.000 ;
   PIN ethernet_dn
     DIRECTION INOUT ;
     USE SIGNAL ;
@@ -52,7 +36,7 @@ MACRO minimal_diff
     END
   END ethernet_dp
   PIN in_p
-    DIRECTION INOUT ;
+    DIRECTION INPUT ;
     USE SIGNAL ;
     ANTENNADIFFAREA 0.201000 ;
     PORT
@@ -61,7 +45,7 @@ MACRO minimal_diff
     END
   END in_p
   PIN in_n
-    DIRECTION INOUT ;
+    DIRECTION INPUT ;
     USE SIGNAL ;
     ANTENNADIFFAREA 0.201000 ;
     PORT
@@ -71,6 +55,42 @@ MACRO minimal_diff
         RECT 2.020 -2.805 4.280 -2.645 ;
     END
   END in_n
+  PIN VPWR
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER Metal1 ;
+        RECT 4.020 -1.305 4.280 -0.640 ;
+        RECT 3.950 -1.585 5.725 -1.305 ;
+        RECT 4.020 -2.230 4.280 -1.585 ;
+      LAYER Metal2 ;
+        RECT 5.235 -1.675 6.795 -1.205 ;
+      LAYER Metal3 ;
+        RECT 6.200 -1.790 8.285 -1.130 ;
+      LAYER Metal4 ;
+        RECT 7.630 -1.970 8.575 1.980 ;
+      LAYER Metal5 ;
+        RECT -45.850 1.000 54.150 11.000 ;
+    END
+  END VPWR
+  PIN VGND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER Metal1 ;
+        RECT 2.020 -1.055 2.280 -0.640 ;
+        RECT 0.105 -1.715 2.280 -1.055 ;
+        RECT 2.020 -2.230 2.280 -1.715 ;
+      LAYER Metal2 ;
+        RECT -1.785 -1.905 0.885 -0.840 ;
+      LAYER Metal3 ;
+        RECT -3.980 -2.085 -0.690 -0.630 ;
+      LAYER Metal4 ;
+        RECT -4.385 -8.050 -2.580 -0.420 ;
+      LAYER Metal5 ;
+        RECT -45.850 -17.000 54.150 -7.000 ;
+    END
+  END VGND
 END minimal_diff
 END LIBRARY
 

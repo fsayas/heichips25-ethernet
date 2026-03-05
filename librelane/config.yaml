@@ -52,8 +52,8 @@ MACROS:
 PDN_MACRO_CONNECTIONS:
   - "minimal_diff_0 VPWR VGND VPWR VGND"
 
-#FP_PDN_VPITCH: 20
-#FP_PDN_HPITCH: 20
+FP_PDN_VPITCH: 20
+FP_PDN_HPITCH: 20
 
 # Custom PDN config
 FP_PDN_CFG: dir::pdn_cfg.tcl
