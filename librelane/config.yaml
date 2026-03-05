@@ -46,7 +46,7 @@ MACROS:
       - dir::analog_macro/minimal_diff.lef
     instances:
       minimal_diff_0:
-        location: [20, 20]
+        location: [10, 10]
         orientation: N
 
 PDN_MACRO_CONNECTIONS:

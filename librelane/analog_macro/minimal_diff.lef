@@ -5,34 +5,32 @@ VERSION 5.7 ;
 MACRO minimal_diff
   CLASS BLOCK ;
   FOREIGN minimal_diff ;
-  ORIGIN 45.850 17.000 ;
+  ORIGIN 0.000 0.000 ;
   SIZE 100.000 BY 28.000 ;
   PIN ethernet_dn
     DIRECTION INOUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.039000 ;
+    ANTENNAGATEAREA 0.019500 ;
     PORT
       LAYER GatPoly ;
-        RECT 2.750 -2.370 3.250 -2.000 ;
-        RECT 1.895 -2.500 2.075 -2.370 ;
-        RECT 2.225 -2.500 4.075 -2.370 ;
-        RECT 4.225 -2.500 4.405 -2.370 ;
+        RECT 48.600 14.630 49.100 15.000 ;
+        RECT 47.745 14.500 47.925 14.630 ;
+        RECT 48.075 14.500 49.745 14.630 ;
       LAYER Metal1 ;
-        RECT 2.750 -2.370 3.250 -1.620 ;
+        RECT 48.600 14.630 49.100 15.380 ;
     END
   END ethernet_dn
   PIN ethernet_dp
     DIRECTION INOUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.039000 ;
+    ANTENNAGATEAREA 0.019500 ;
     PORT
       LAYER GatPoly ;
-        RECT 1.895 -0.500 2.075 -0.370 ;
-        RECT 2.225 -0.500 4.075 -0.370 ;
-        RECT 4.225 -0.500 4.405 -0.370 ;
-        RECT 2.750 -0.870 3.250 -0.500 ;
+        RECT 47.745 16.500 47.925 16.630 ;
+        RECT 48.075 16.500 49.745 16.630 ;
+        RECT 48.600 16.130 49.100 16.500 ;
       LAYER Metal1 ;
-        RECT 2.750 -1.250 3.250 -0.500 ;
+        RECT 48.600 15.750 49.100 16.500 ;
     END
   END ethernet_dp
   PIN in_p
@@ -41,7 +39,7 @@ MACRO minimal_diff
     ANTENNADIFFAREA 0.201000 ;
     PORT
       LAYER Metal1 ;
-        RECT 2.020 -0.230 4.280 -0.070 ;
+        RECT 47.870 16.770 50.150 16.930 ;
     END
   END in_p
   PIN in_n
@@ -50,9 +48,10 @@ MACRO minimal_diff
     ANTENNADIFFAREA 0.201000 ;
     PORT
       LAYER Metal1 ;
-        RECT 2.020 -2.645 2.280 -2.640 ;
-        RECT 4.020 -2.645 4.280 -2.640 ;
-        RECT 2.020 -2.805 4.280 -2.645 ;
+        RECT 47.870 14.355 48.130 14.360 ;
+        RECT 49.890 14.355 50.150 14.360 ;
+        RECT 47.870 14.200 50.150 14.355 ;
+        RECT 47.870 14.195 50.130 14.200 ;
     END
   END in_n
   PIN VPWR
@@ -60,17 +59,19 @@ MACRO minimal_diff
     USE POWER ;
     PORT
       LAYER Metal1 ;
-        RECT 4.020 -1.305 4.280 -0.640 ;
-        RECT 3.950 -1.585 5.725 -1.305 ;
-        RECT 4.020 -2.230 4.280 -1.585 ;
+        RECT 49.870 16.200 50.150 16.360 ;
+        RECT 49.870 15.695 50.130 16.200 ;
+        RECT 49.800 15.415 51.575 15.695 ;
+        RECT 49.870 14.930 50.130 15.415 ;
+        RECT 49.870 14.770 50.150 14.930 ;
       LAYER Metal2 ;
-        RECT 5.235 -1.675 6.795 -1.205 ;
+        RECT 51.085 15.325 52.645 15.795 ;
       LAYER Metal3 ;
-        RECT 6.200 -1.790 8.285 -1.130 ;
+        RECT 52.050 15.210 54.135 15.870 ;
       LAYER Metal4 ;
-        RECT 7.630 -1.970 8.575 1.980 ;
+        RECT 53.480 15.030 54.425 18.980 ;
       LAYER Metal5 ;
-        RECT -45.850 1.000 54.150 11.000 ;
+        RECT 0.000 18.000 100.000 28.000 ;
     END
   END VPWR
   PIN VGND
@@ -78,19 +79,26 @@ MACRO minimal_diff
     USE GROUND ;
     PORT
       LAYER Metal1 ;
-        RECT 2.020 -1.055 2.280 -0.640 ;
-        RECT 0.105 -1.715 2.280 -1.055 ;
-        RECT 2.020 -2.230 2.280 -1.715 ;
+        RECT 47.870 15.945 48.130 16.360 ;
+        RECT 45.955 15.285 48.130 15.945 ;
+        RECT 47.870 14.770 48.130 15.285 ;
       LAYER Metal2 ;
-        RECT -1.785 -1.905 0.885 -0.840 ;
+        RECT 44.065 15.095 46.735 16.160 ;
       LAYER Metal3 ;
-        RECT -3.980 -2.085 -0.690 -0.630 ;
+        RECT 41.870 14.915 45.160 16.370 ;
       LAYER Metal4 ;
-        RECT -4.385 -8.050 -2.580 -0.420 ;
+        RECT 41.465 8.950 43.270 16.580 ;
       LAYER Metal5 ;
-        RECT -45.850 -17.000 54.150 -7.000 ;
+        RECT 0.000 0.000 100.000 10.000 ;
     END
   END VGND
+  OBS
+      LAYER GatPoly ;
+        RECT 49.765 16.500 49.945 16.630 ;
+        RECT 50.095 16.500 50.275 16.630 ;
+        RECT 49.765 14.500 49.945 14.630 ;
+        RECT 50.095 14.500 50.275 14.630 ;
+  END
 END minimal_diff
 END LIBRARY
 
