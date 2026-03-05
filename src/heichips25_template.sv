@@ -13,7 +13,9 @@ module heichips25_template (
     output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
     input  wire       ena,      // always 1 when the design is powered, so you can ignore it
     input  wire       clk,      // clock
-    input  wire       rst_n     // reset_n - low to reset
+    input  wire       rst_n,    // reset_n - low to reset
+    output wire       ethernet_dp,
+    output wire       ethernet_dn
 );
 
     // List all unused inputs to prevent warnings
@@ -34,5 +36,8 @@ module heichips25_template (
     assign uo_out  = count;
     assign uio_out = count;
     assign uio_oe  = '1;
+
+    assign ethernet_dp = '1;
+    assign ethernet_dn = '0;
 
 endmodule

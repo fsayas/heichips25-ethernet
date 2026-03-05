@@ -1,0 +1,66 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO minimal_diff
+  CLASS BLOCK ;
+  FOREIGN minimal_diff ;
+  ORIGIN -1.870 3.180 ;
+  SIZE 2.740 BY 3.490 ;
+  PIN VPWR
+    ANTENNADIFFAREA 0.201000 ;
+    PORT
+      LAYER Metal1 ;
+        RECT 4.020 -2.230 4.280 -0.640 ;
+    END
+  END VPWR
+  PIN VGND
+    ANTENNADIFFAREA 0.201000 ;
+    PORT
+      LAYER Metal1 ;
+        RECT 2.020 -2.230 2.280 -0.640 ;
+    END
+  END VGND
+  PIN ethernet_dn
+    ANTENNAGATEAREA 0.039000 ;
+    PORT
+      LAYER GatPoly ;
+        RECT 2.750 -2.370 3.250 -2.000 ;
+        RECT 1.895 -2.500 2.075 -2.370 ;
+        RECT 2.225 -2.500 4.075 -2.370 ;
+        RECT 4.225 -2.500 4.405 -2.370 ;
+      LAYER Metal1 ;
+        RECT 2.750 -2.370 3.250 -1.620 ;
+    END
+  END ethernet_dn
+  PIN ethernet_dp
+    ANTENNAGATEAREA 0.039000 ;
+    PORT
+      LAYER GatPoly ;
+        RECT 1.895 -0.500 2.075 -0.370 ;
+        RECT 2.225 -0.500 4.075 -0.370 ;
+        RECT 4.225 -0.500 4.405 -0.370 ;
+        RECT 2.750 -0.870 3.250 -0.500 ;
+      LAYER Metal1 ;
+        RECT 2.750 -1.250 3.250 -0.500 ;
+    END
+  END ethernet_dp
+  PIN in_p
+    ANTENNADIFFAREA 0.201000 ;
+    PORT
+      LAYER Metal1 ;
+        RECT 2.020 -0.230 4.280 -0.070 ;
+    END
+  END in_p
+  PIN in_n
+    ANTENNADIFFAREA 0.201000 ;
+    PORT
+      LAYER Metal1 ;
+        RECT 2.020 -2.645 2.280 -2.640 ;
+        RECT 4.020 -2.645 4.280 -2.640 ;
+        RECT 2.020 -2.805 4.280 -2.645 ;
+    END
+  END in_n
+END minimal_diff
+END LIBRARY
+
