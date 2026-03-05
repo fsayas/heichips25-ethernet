@@ -8,20 +8,24 @@ MACRO minimal_diff
   ORIGIN -1.870 3.180 ;
   SIZE 2.740 BY 3.490 ;
   PIN VPWR
-    ANTENNADIFFAREA 0.201000 ;
+    DIRECTION INOUT ;
+    USE POWER ;
     PORT
       LAYER Metal1 ;
         RECT 4.020 -2.230 4.280 -0.640 ;
     END
   END VPWR
   PIN VGND
-    ANTENNADIFFAREA 0.201000 ;
+    DIRECTION INOUT ;
+    USE GROUND ;
     PORT
       LAYER Metal1 ;
         RECT 2.020 -2.230 2.280 -0.640 ;
     END
   END VGND
   PIN ethernet_dn
+    DIRECTION INOUT ;
+    USE SIGNAL ;
     ANTENNAGATEAREA 0.039000 ;
     PORT
       LAYER GatPoly ;
@@ -34,6 +38,8 @@ MACRO minimal_diff
     END
   END ethernet_dn
   PIN ethernet_dp
+    DIRECTION INOUT ;
+    USE SIGNAL ;
     ANTENNAGATEAREA 0.039000 ;
     PORT
       LAYER GatPoly ;
@@ -46,6 +52,8 @@ MACRO minimal_diff
     END
   END ethernet_dp
   PIN in_p
+    DIRECTION INOUT ;
+    USE SIGNAL ;
     ANTENNADIFFAREA 0.201000 ;
     PORT
       LAYER Metal1 ;
@@ -53,6 +61,8 @@ MACRO minimal_diff
     END
   END in_p
   PIN in_n
+    DIRECTION INOUT ;
+    USE SIGNAL ;
     ANTENNADIFFAREA 0.201000 ;
     PORT
       LAYER Metal1 ;

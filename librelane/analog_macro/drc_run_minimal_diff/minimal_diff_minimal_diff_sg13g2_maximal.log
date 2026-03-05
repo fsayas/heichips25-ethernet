@@ -1,0 +1,9 @@
+# Logfile created on 2026-03-05 14:49:25 +0100 by logger.rb/v1.6.0
+2026-03-05 14:49:25 +0100: Memory Usage (422656K) : Starting running IHP-SG13G2 Klayout DRC maximum runset on /home/ubudev/heichips25-ethernet/klayout/minimal_diff.gds
+2026-03-05 14:49:25 +0100: Memory Usage (422656K) : Ruby Version for klayout: 3.3.10
+2026-03-05 14:49:25 +0100: Memory Usage (423552K) : Loading database to memory is complete.
+2026-03-05 14:49:25 +0100: Memory Usage (423552K) : IHP-SG13G2 Klayout DRC maximum runset output at: /home/ubudev/heichips25-template/librelane/analog_macro/drc_run_minimal_diff/minimal_diff_minimal_diff_sg13g2_maximal.lyrdb
+2026-03-05 14:49:25 +0100: Memory Usage (423680K) : Evaluate switches.
+2026-03-05 14:49:25 +0100: Memory Usage (423680K) : Klayout will use  thread(s)
+2026-03-05 14:49:25 +0100: Memory Usage (423680K) : deep mode is enabled for sg13g2_maximal runset.
+2026-03-05 14:49:26 +0100: Memory Usage (448256K) : KLayout DRC run for maximum ruleSet completed in 1.24 seconds
