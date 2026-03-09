@@ -1,0 +1,9 @@
+09-mar-2026 17:38:43 | INFO    | KLayout version detected: 0.30.4
+09-mar-2026 17:38:43 | INFO    | Using DRC JSON file: /home/ubudev/.ciel/ciel/ihp-sg13g2/versions/c4b8b4e5e7a05f375cca3815d51b3a37721fbf5c/ihp-sg13g2/libs.tech/klayout/python/sg13g2_pycell_lib/sg13g2_tech_mod.json
+09-mar-2026 17:38:43 | INFO    | Running IHP-SG13G2 main checks on design /home/ubudev/submit/heichips25-ethernet/librelane/macro_analog/line_driver.gds, topcell: line_driver
+09-mar-2026 17:38:45 | INFO    | Running IHP-SG13G2 sg13g2_maximal checks on design /home/ubudev/submit/heichips25-ethernet/librelane/macro_analog/line_driver.gds, topcell: line_driver
+09-mar-2026 17:38:51 | INFO    | Completed running Sg13g2_maximal checks.
+09-mar-2026 17:38:51 | INFO    | =====================================================================================
+09-mar-2026 17:38:51 | INFO    | ✅ --- KLayout DRC Check Passed: No DRC violations detected in the layout. --- ✅
+09-mar-2026 17:38:51 | INFO    | =====================================================================================
+09-mar-2026 17:38:51 | INFO    | Total DRC Run time: 8.97 seconds (including execution, analysis, and reporting)

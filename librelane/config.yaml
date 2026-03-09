@@ -46,8 +46,8 @@ MACROS:
       - dir::macro_analog/line_driver.lef
     instances:
       line_driver_0:
-        location: [400, 1.5]
-        orientation: E
+        location: [250, 60]
+        orientation: N
 
 PDN_MACRO_CONNECTIONS:
   - "line_driver_0 VPWR VGND VPWR VGND"
@@ -58,6 +58,4 @@ FP_PDN_HPITCH: 20
 # Custom PDN config
 FP_PDN_CFG: dir::pdn_cfg.tcl
 
-#TOP_MARGIN_MULT: 1
-#BOTTOM_MARGIN_MULT: 1
-CORE_AREA: [1, 1, 499, 199]
+#CORE_AREA: [0, 0, 500, 200]
