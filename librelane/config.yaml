@@ -1,7 +1,11 @@
 # LibreLane configuration file
 
 DESIGN_NAME: heichips25_ethernet
-VERILOG_FILES: dir::../src/heichips25_ethernet.sv
+#VERILOG_FILES: dir::../src/heichips25_template.sv
+VERILOG_FILES:
+ - dir::../src/heichips25_ethernet.sv
+ - dir::../src/phy.v
+
 CLOCK_PORT: clk
 CLOCK_PERIOD: 10 # 10ns = 100MHz
 
@@ -33,48 +37,23 @@ RT_MAX_LAYER: TopMetal1
 # Enable for better SystemVerilog support
 #USE_SLANG: true
 
-# MACROS:
-#   line_driver:
-#     gds:
-#       - dir::macro_analog/line_driver.gds
-#     lef:
-#       - dir::macro_analog/line_driver.lef
-#     nl:
-#       - dir::macro_analog/line_driver.nl.v
-#     instances:
-#       line_driver_i:
-#         location: [20, 20]
-#         orientation: N
-
-# PDN_MACRO_CONNECTIONS:
-#   - "line_driver_i VPWR VGND VPWR VGND"
-
 
 MACROS:
-  counter_8bit:
+  line_driver:
     gds:
-      - dir::counter_8bit/final/gds/counter_8bit.gds
+      - dir::macro_analog/line_driver.gds
     lef:
-      - dir::counter_8bit/final/lef/counter_8bit.lef
-    nl:
-      - dir::counter_8bit/final/nl/counter_8bit.nl.v
-    lib:
-      nom_typ_1p20V_25C:
-        - dir::counter_8bit/final/lib/nom_typ_1p20V_25C/counter_8bit__nom_typ_1p20V_25C.lib
-      nom_fast_1p32V_m40C:
-        - dir::counter_8bit/final/lib/nom_fast_1p32V_m40C/counter_8bit__nom_fast_1p32V_m40C.lib
-      nom_slow_1p08V_125C:
-        - dir::counter_8bit/final/lib/nom_slow_1p08V_125C/counter_8bit__nom_slow_1p08V_125C.lib
-    spef:
-      nom:
-        - dir::counter_8bit/final/spef/nom/counter_8bit.nom.spef
+      - dir::macro_analog/line_driver.lef
     instances:
-      counter_0:
-        location: [20, 20]
-        orientation: N
+      line_driver_0:
+        location: [400, 0.1]
+        orientation: E
 
 PDN_MACRO_CONNECTIONS:
-  - "counter_0 VPWR VGND VPWR VGND"
+  - "line_driver_0 VPWR VGND VPWR VGND"
 
 FP_PDN_VPITCH: 20
 FP_PDN_HPITCH: 20
+
+# Custom PDN config
+FP_PDN_CFG: dir::pdn_cfg.tcl

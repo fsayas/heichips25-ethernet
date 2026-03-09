@@ -1,0 +1,66 @@
+
+Magic 8.3 revision 581 - Compiled on Tue Jan  6 19:09:29 UTC 2026.
+Starting magic under Tcl interpreter
+Using the terminal as the console.
+Using NULL graphics device.
+Processing system .magicrc file
+Switching to WIRING tool.
+Switching to NETLIST tool.
+Switching to PICK tool.
+Switching to BOX tool.
+Sourcing design .magicrc for technology ihp-sg13g2 ...
+2 Magic internal units = 1 Lambda
+Input style sg13g2(): scaleFactor=2, multiplier=2
+The following types are not handled by extraction and will be treated as non-electrical types:
+    pblock sealcont difffill nemitter hvnemitter hvisodiffres sealvia1 sealvia2 sealvia3 sealvia4 sealvia5 sealvia6 pillar solder seal glass thruvia inductor 
+Scaled tech values by 2 / 1 to match internal grid scaling
+Loading ihp-sg13g2 Device Generator Menu ...
+Using technology "ihp-sg13g2", version 1.0.0
+Root cell box:
+           width x height  (   llx,  lly  ), (   urx,  ury  )
+
+microns:   0.000 x 0.000   ( 0.000,  0.000), ( 0.000,  0.000)
+lambda:     0.00 x 0.00    (  0.00,  0.00 ), (  0.00,  0.00 )
+internal:      0 x 0       (     0,  0    ), (     0,  0    )
+Warning: Calma reading is not undoable!  I hope that's OK.
+Library written using GDS-II Release 6.0
+Library name: LIB
+Reading "$$$CONTEXT_INFO$$$".
+Reading "ptap1$1".
+Moving label "sub!" from space to ptapdiff in cell ptap1$1.
+Reading "ptap1".
+Moving label "sub!" from space to ptapdiff in cell ptap1.
+Reading "ntap1$1".
+Reading "ntap1".
+Reading "nmos".
+Reading "pmos".
+Reading "conn_nmos".
+Reading "conn_pmos".
+Reading "ptap_drivers".
+Reading "ntap_drivers".
+Reading "NMOS_drivers".
+Reading "PMOS_drivers".
+Reading "interconnect".
+Reading "line_driver".
+Port 0 -> ethernet_dn
+port 0 class -> bidirectional
+port 0 use   -> signal
+Port 1 -> ethernet_dp
+port 1 class -> bidirectional
+port 1 use   -> signal
+Port 2 -> in_n
+port 2 class -> input
+port 2 use   -> signal
+Port 3 -> in_p
+port 3 class -> input
+port 3 use   -> signal
+Port 4 -> VGND
+port 4 class -> bidirectional
+port 4 use   -> ground
+Port 5 -> VPWR
+port 5 class -> bidirectional
+port 5 use   -> power
+Generating LEF output line_driver.lef for cell line_driver:
+Diagnostic:  Write LEF header for cell line_driver
+Diagnostic:  Writing LEF output for cell line_driver
+Diagnostic:  Scale value is 0.005000
