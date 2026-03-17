@@ -1,0 +1,68 @@
+  PIN VGND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER TopMetal1 ;
+        RECT 219.840 2.470 221.840 197.530 ;
+    END
+    PORT
+      LAYER TopMetal1 ;
+        RECT 259.840 2.470 261.840 197.530 ;
+    END
+    PORT
+      LAYER TopMetal1 ;
+        RECT 299.840 2.470 301.840 197.530 ;
+    END
+    PORT
+      LAYER TopMetal1 ;
+        RECT 339.840 2.470 341.840 197.530 ;
+    END
+    PORT
+      LAYER TopMetal1 ;
+        RECT 379.840 2.470 381.840 197.530 ;
+    END
+    PORT
+      LAYER TopMetal1 ;
+        RECT 419.840 2.470 421.840 197.530 ;
+    END
+    PORT
+      LAYER TopMetal1 ;
+        RECT 459.840 2.470 461.840 197.530 ;
+    END
+  END VGND
+  PIN VPWR
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER TopMetal1 ;
+        RECT 199.840 2.470 201.840 197.530 ;
+    END
+    PORT
+      LAYER TopMetal1 ;
+        RECT 239.840 2.470 241.840 197.530 ;
+    END
+    PORT
+      LAYER TopMetal1 ;
+        RECT 279.840 2.470 281.840 197.530 ;
+    END
+    PORT
+      LAYER TopMetal1 ;
+        RECT 319.840 2.470 321.840 197.530 ;
+    END
+    PORT
+      LAYER TopMetal1 ;
+        RECT 359.840 2.470 361.840 197.530 ;
+    END
+    PORT
+      LAYER TopMetal1 ;
+        RECT 399.840 2.470 401.840 197.530 ;
+    END
+    PORT
+      LAYER TopMetal1 ;
+        RECT 439.840 2.470 441.840 197.530 ;
+    END
+    PORT
+      LAYER TopMetal1 ;
+        RECT 479.840 2.470 481.840 197.530 ;
+    END
+  END VPWR
