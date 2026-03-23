@@ -1,0 +1,32 @@
+MDIO PHY Test Plan
+
+1. Preamble Synchronization
+   - Test 1.1: 31 ones, a 0, 1 -> Should not sync, should not parse frame.
+   - Test 1.2: 1 one, a 0, 32 ones -> Should ignore the first sequence and successfully sync on the 32 ones.
+   - Test 1.3: Exactly 32 ones -> Should successfully sync and parse the next bits as a frame.
+   - Test 1.4: > 32 ones (e.g., 64 ones) -> Should successfully sync.
+
+2. Frame Formatting
+   - Test 2.1: No start bit (e.g., after preamble, sends 11 instead of 01) -> Should not parse frame.
+   - Test 2.2: Wrong opcode (e.g., 00 or 11) -> Should ignore and return to idle.
+   - Test 2.3: Wrong PHY address (e.g., 5'h02 instead of 5'h01) -> Should ignore frame, no turnaround, no data drive.
+
+3. Reading Registers
+   - Test 3.1: Read Reg 0 (BMCR) -> Should return 16'h0100 (Default: Duplex=1).
+   - Test 3.2: Read Reg 1 (BMSR) -> Should return 16'h1804.
+   - Test 3.3: Read Reg 2 (PHYID1) -> Should return 16'h4843.
+   - Test 3.4: Read Reg 3 (PHYID2) -> Should return 16'h2025.
+   - Test 3.5: Read Reg 16 (Packet Count) -> Should return initial value (0).
+
+4. Writing Registers & Bitfields
+   - Test 4.1: Write Reg 0, Loopback bit (Bit 14) to 1. Verify standard return.
+   - Test 4.2: Verify Loopback affects RX_DV and RXD logic internally.
+   - Test 4.3: Write Reg 0, Reset bit (Bit 15) to 1. Verify packet count clears.
+   - Test 4.4: Write ignored on read-only registers (e.g., try modifying BMSR or PHYID).
+
+5. Electrical and Timing Characteristics
+   - Test 5.1: Check Turnaround (TA) timing: PHY must take over MDIO on the precise cycle for Read.
+   - Test 5.2: Check MDIO_OE and MDIO_O status during IDLE and Turnaround.
+
+6. Reset & Initialization
+   - Test 6.1: Assert hardware RST_N during an MDIO frame. Verify state machine accurately drops to IDLE and MDIO_OE goes low constraint safely.

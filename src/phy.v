@@ -8,13 +8,14 @@ module phy(
     output       rx_dv,     // Receive Data Valid
     output [1:0] rxd,       // Receive Data
 
-    input        mdc,       // MDC
-    input        mdio_i,    // MDIO
-    output       mdio_o,    // MDIO
-    output       mdio_oe,   // MDIO
+    input        mdc_i,     // MDC input
+    output       mdc_o,     // MDC output
+    output       mdc_oe,    // MDC output enable
+    input        mdio_i,    // MDIO input
+    output       mdio_o,    // MDIO output
+    output       mdio_oe,   // MDIO output enable
 
-    output reg   tx_p,
-    output reg   tx_n
+    output       tx         // TX output line
 
 );
 
@@ -25,10 +26,6 @@ module phy(
     reg tx_en_dd;
     reg [1:0] txd_d;
     reg [1:0] txd_dd;
-    reg mdc_d;
-    reg mdc_dd;
-    reg mdio_i_d;
-    reg mdio_i_dd;
 
     always @(posedge clk or negedge rst_n) begin // 100 MHz
         if (!rst_n) begin
@@ -38,10 +35,6 @@ module phy(
             tx_en_dd <= 0;
             txd_d <= 2'b00;
             txd_dd <= 2'b00;
-            mdc_d <= 0;
-            mdc_dd <= 0;
-            mdio_i_d <= 0;
-            mdio_i_dd <= 0;
         end else begin
             ref_clk_dd <= ref_clk_d;
             ref_clk_d <= ref_clk;
@@ -49,10 +42,6 @@ module phy(
             tx_en_d <= tx_en;
             txd_dd <= txd_d;
             txd_d <= txd;
-            mdc_dd <= mdc_d;
-            mdc_d <= mdc;
-            mdio_i_dd <= mdio_i_d;
-            mdio_i_d <= mdio_i;
         end
     end
 
@@ -69,74 +58,93 @@ module phy(
         end else begin
             
             if (!ref_clk_dd && ref_clk_d) begin // 50 MHz rising edge
-
                 if (tx_en_dd) begin
-
-                    if (cycle_count >= 9) begin
-                        enc_buf <= {txd_dd[1] ? 2'b01 : 2'b10,  // Manchester encoding
-                                    txd_dd[0] ? 2'b01 : 2'b10}; // 0 --> 01, 1 --> 10
-                        cycle_count <= 0;
-                    end else
-                        cycle_count <= cycle_count + 1;
-
+                    if (cycle_count >= 9) cycle_count <= 0;
+                    else cycle_count <= cycle_count + 1;
                 end else begin
                     cycle_count <= 9;
                 end
-
             end
 
-            if (enc_count >= 4) begin // 20 MHz (50 ns)                
-                enc_buf <= enc_buf >>> 1; // Arithmetic shift right preserves MSB
+            if (!ref_clk_dd && ref_clk_d && tx_en_dd && (cycle_count >= 9)) begin
+                enc_buf <= {txd_dd[1] ? 2'b10 : 2'b01, 
+                            txd_dd[0] ? 2'b10 : 2'b01}; 
+                enc_count <= 0;
+            end else if (enc_count >= 4) begin
+                enc_buf <= {enc_buf[3], enc_buf[3:1]};
                 enc_count <= 0;
             end else begin
-                if (!tx_en_dd && tx_en_d) // TX_EN assertion resets count
-                    enc_count <= 0;
-                else
-                    enc_count <= enc_count + 1;
+                enc_count <= enc_count + 1;
             end
 
         end
     end
 
+    assign tx = enc_buf[0];
 
-    // Link Integrity Test. Send NLP (100 ns each 16 ms of inactivity)
-    reg [20:0] lit_count;
-    reg do_nlp;
 
+
+    // MDIO Submodule Instantiation
+    wire [4:0]  reg_addr;
+    wire [15:0] reg_wdata;
+    wire        reg_write_en;
+    reg  [15:0] reg_rdata;
+
+    wire _unused_wdata = &{1'b0, reg_wdata[13:0]};
+
+    mdio #(.PHY_ADDR(5'b00001)) mdio_inst (
+        .clk(clk),
+        .rst_n(rst_n),
+        .mdc_i(mdc_i),
+        .mdio_i(mdio_i),
+        .mdio_o(mdio_o),
+        .mdio_oe(mdio_oe),
+        .reg_addr(reg_addr),
+        .reg_wdata(reg_wdata),
+        .reg_write_en(reg_write_en),
+        .reg_rdata(reg_rdata)
+    );
+
+    // Register Read Multiplexer
+    reg reg_loopback;
+    reg [15:0] tx_packet_count;
+
+    always @(*) begin
+        case (reg_addr)
+            5'd0:  reg_rdata = {1'b0, reg_loopback, 5'b00000, 1'b1, 8'b00000000}; // BMCR
+            5'd1:  reg_rdata = 16'h1804; // BMSR
+            5'd2:  reg_rdata = 16'h4843; // PHYID1 ("HC")
+            5'd3:  reg_rdata = 16'h2025; // PHYID2 ("25")
+            5'd16: reg_rdata = tx_packet_count; // Vendor Specific TX Packet Count
+            default: reg_rdata = 16'h0000;
+        endcase
+    end
+
+    // Register Write & Statistics Logic
     always @(posedge clk or negedge rst_n) begin // 100 MHz
         if (!rst_n) begin
-            lit_count <= 0;
-            do_nlp <= 0;
+            reg_loopback <= 1'b0;
+            tx_packet_count <= 16'd0;
         end else begin
-            if (!tx_en_dd) begin
-                if (lit_count < 1600000) begin // 16 ms interval
-                    lit_count <= lit_count + 1;  
-                end else if (lit_count < 1600010) begin // 100 ns NLP
-                    lit_count <= lit_count + 1; 
-                    do_nlp <= 1;
-                end else begin
-                    lit_count <= 0;
-                    do_nlp <= 0;
+            if (reg_write_en && reg_addr == 5'd0) begin
+                reg_loopback <= reg_wdata[14];
+                if (reg_wdata[15]) begin
+                    tx_packet_count <= 16'd0; // Use soft-reset to clear stats
                 end
-            end else begin
-                lit_count <= 0;
-                do_nlp <= 0;
+            end
+            
+            if (!tx_en_dd && tx_en_d) begin
+                tx_packet_count <= tx_packet_count + 1;
             end
         end
     end
 
-    // Manage outputs
-    always @(posedge clk) begin
-        tx_p <= do_nlp ? ~enc_buf[0] : enc_buf[0];
-        tx_n <= do_nlp ? enc_buf[0] : ~enc_buf[0];
-    end
+    // Loopback Management
+    assign rx_dv = reg_loopback ? tx_en : 1'b0;
+    assign rxd   = reg_loopback ? txd   : 2'b00;
 
-    // TODO: MDIO. Dumb connection to use signals.
-    assign mdio_o = mdio_i_dd;
-    assign mdio_oe = mdc_dd;
-
-    // TODO: manage loopback
-    assign rx_dv = tx_en;
-    assign rxd = txd;
+    // MDC tri-state pins remain inputs
+    assign mdc_o = 1'b0;
+    assign mdc_oe = 1'b0;
 
 endmodule

@@ -1,0 +1,9 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1774256734" />
+    <testcase name="test_mdio_preamble_sync" classname="test_phy" file="/home/ubudev/rework/heichips25-ethernet/tb/test_phy.py" lineno="74" time="0.13238000869750977" sim_time_ns="27800.0" ratio_time="210001.49700490956" />
+    <testcase name="test_wrong_address" classname="test_phy" file="/home/ubudev/rework/heichips25-ethernet/tb/test_phy.py" lineno="97" time="0.20215606689453125" sim_time_ns="25799.999999999996" ratio_time="127624.16877382343" />
+    <testcase name="test_mdio_reads" classname="test_phy" file="/home/ubudev/rework/heichips25-ethernet/tb/test_phy.py" lineno="107" time="0.42748451232910156" sim_time_ns="77000.0" ratio_time="180123.4846625767" />
+    <testcase name="test_mdio_write_and_loopback" classname="test_phy" file="/home/ubudev/rework/heichips25-ethernet/tb/test_phy.py" lineno="125" time="0.44155454635620117" sim_time_ns="77250.0" ratio_time="174950.0727316316" />
+  </testsuite>
+</testsuites>

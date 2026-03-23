@@ -354,6 +354,7 @@ MACRO heichips25_ethernet
   PIN clk
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 1.450800 ;
     PORT
       LAYER Metal3 ;
         RECT 0.000 183.340 0.400 183.740 ;
@@ -388,6 +389,7 @@ MACRO heichips25_ethernet
   PIN rst_n
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.180700 ;
     PORT
       LAYER Metal3 ;
         RECT 0.000 187.540 0.400 187.940 ;
@@ -405,6 +407,7 @@ MACRO heichips25_ethernet
   PIN ui_in[1]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.180700 ;
     PORT
       LAYER Metal3 ;
         RECT 0.000 116.140 0.400 116.540 ;
@@ -413,6 +416,7 @@ MACRO heichips25_ethernet
   PIN ui_in[2]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.180700 ;
     PORT
       LAYER Metal3 ;
         RECT 0.000 120.340 0.400 120.740 ;
@@ -421,6 +425,7 @@ MACRO heichips25_ethernet
   PIN ui_in[3]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.180700 ;
     PORT
       LAYER Metal3 ;
         RECT 0.000 124.540 0.400 124.940 ;
@@ -429,6 +434,7 @@ MACRO heichips25_ethernet
   PIN ui_in[4]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.180700 ;
     PORT
       LAYER Metal3 ;
         RECT 0.000 128.740 0.400 129.140 ;
@@ -437,6 +443,7 @@ MACRO heichips25_ethernet
   PIN ui_in[5]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.180700 ;
     PORT
       LAYER Metal3 ;
         RECT 0.000 132.940 0.400 133.340 ;
@@ -461,6 +468,7 @@ MACRO heichips25_ethernet
   PIN uio_in[0]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.180700 ;
     PORT
       LAYER Metal3 ;
         RECT 0.000 145.540 0.400 145.940 ;
@@ -469,6 +477,7 @@ MACRO heichips25_ethernet
   PIN uio_in[1]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.180700 ;
     PORT
       LAYER Metal3 ;
         RECT 0.000 149.740 0.400 150.140 ;
@@ -534,7 +543,7 @@ MACRO heichips25_ethernet
   PIN uio_oe[1]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.299200 ;
+    ANTENNADIFFAREA 0.708600 ;
     PORT
       LAYER Metal3 ;
         RECT 0.000 82.540 0.400 82.940 ;
@@ -606,7 +615,7 @@ MACRO heichips25_ethernet
   PIN uio_out[1]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.299200 ;
+    ANTENNADIFFAREA 0.708600 ;
     PORT
       LAYER Metal3 ;
         RECT 0.000 48.940 0.400 49.340 ;
@@ -678,7 +687,7 @@ MACRO heichips25_ethernet
   PIN uo_out[1]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.299200 ;
+    ANTENNADIFFAREA 0.708600 ;
     PORT
       LAYER Metal3 ;
         RECT 0.000 15.340 0.400 15.740 ;
@@ -687,7 +696,7 @@ MACRO heichips25_ethernet
   PIN uo_out[2]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.299200 ;
+    ANTENNADIFFAREA 0.708600 ;
     PORT
       LAYER Metal3 ;
         RECT 0.000 19.540 0.400 19.940 ;
@@ -696,7 +705,7 @@ MACRO heichips25_ethernet
   PIN uo_out[3]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.299200 ;
+    ANTENNADIFFAREA 0.708600 ;
     PORT
       LAYER Metal3 ;
         RECT 0.000 23.740 0.400 24.140 ;

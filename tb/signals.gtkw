@@ -1,0 +1,58 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Mon Mar 23 03:41:21 2026
+[*]
+[dumpfile] "/home/ubudev/rework/heichips25-ethernet/tb/phy_tb.vcd"
+[dumpfile_mtime] "Mon Mar 23 03:25:06 2026"
+[dumpfile_size] 3973
+[savefile] "/home/ubudev/rework/heichips25-ethernet/tb/signals.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-17.554148 245000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] phy_tb.
+[sst_width] 284
+[signals_width] 158
+[sst_expanded] 1
+[sst_vpaned_height] 156
+@28
+phy_tb.dut.clk
+phy_tb.dut.rst_n
+phy_tb.dut.ref_clk
+phy_tb.dut.tx_en
+phy_tb.dut.txd[1:0]
+phy_tb.dut.ref_clk_d
+phy_tb.dut.tx_en_d
+phy_tb.dut.txd_d[1:0]
+phy_tb.dut.ref_clk_dd
+@29
+phy_tb.dut.tx_en_dd
+@28
+phy_tb.dut.txd_dd[1:0]
+phy_tb.dut.tx_p
+phy_tb.dut.tx_n
+phy_tb.dut.rx_dv
+phy_tb.dut.rxd[1:0]
+@22
+phy_tb.dut.cycle_count[3:0]
+@28
+phy_tb.dut.do_nlp
+@22
+phy_tb.dut.enc_buf[3:0]
+@28
+phy_tb.dut.enc_count[2:0]
+@22
+phy_tb.dut.lit_count[20:0]
+@28
+phy_tb.dut.mdc_d
+phy_tb.dut.mdc_dd
+phy_tb.dut.mdc_i
+phy_tb.dut.mdc_o
+phy_tb.dut.mdc_oe
+phy_tb.dut.mdio_i
+phy_tb.dut.mdio_i_d
+phy_tb.dut.mdio_i_dd
+phy_tb.dut.mdio_o
+phy_tb.dut.mdio_oe
+[pattern_trace] 1
+[pattern_trace] 0
